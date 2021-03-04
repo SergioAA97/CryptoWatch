@@ -2,7 +2,9 @@
 
 const MongoClient = require("mongodb").MongoClient;
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI =
+  process.env.MONGODB_URI ||
+  "mongodb+srv://cryptowatch:kFWo6X1AzS6IgWEN@tfg-cluster.igim9.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const DB_NAME = "cryptowatch";
 
 let cachedDb = null;
@@ -22,14 +24,14 @@ const connectToDatabase = async (uri) => {
 };
 
 const queryDatabase = async (db) => {
-  const pokemon = await db.collection("wallets").find({}).toArray();
+  const wallets = await db.collection("wallets").find({}).toArray();
 
   return {
     statusCode: 200,
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(pokemon),
+    body: JSON.stringify(wallets),
   };
 };
 
