@@ -3,8 +3,7 @@
 const MongoClient = require("mongodb").MongoClient;
 
 const MONGODB_URI =
-  process.env.MONGODB_URI ||
-  "mongodb+srv://cryptowatch:kFWo6X1AzS6IgWEN@tfg-cluster.igim9.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  process.env.MONGODB_URI ;
 const DB_NAME = "cryptowatch";
 
 let cachedDb = null;
